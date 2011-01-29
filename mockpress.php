@@ -1656,5 +1656,3 @@ function _get_node_value($xml, $xpath) {
 function _wrap_xml($string) {
 	return new SimpleXMLElement("<x>" . $string . "</x>");
 }
-
-?>

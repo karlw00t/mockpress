@@ -124,8 +124,14 @@ function setup_postdata($p) {
 function update_post_meta($post_id, $field, $value) {
   global $wp_test_expectations;
   if (!isset($wp_test_expectations['post_meta'][$post_id])) {
-    $wp_test_expectations['post_meta'][$post_id] = array();
+    return $wp_test_expectations['post_meta'][$post_id] = array();
   }
+  $wp_test_expectations['post_meta'][$post_id][$field] = $value;
+	return true;
+}
+
+function add_post_meta($post_id, $field, $value) {
+  global $wp_test_expectations;
   $wp_test_expectations['post_meta'][$post_id][$field] = $value;
 }
 
@@ -219,4 +225,8 @@ function _set_get_children($options, $children) {
 function get_children($options) {
   global $wp_test_expectations;
   return $wp_test_expectations['children'][md5(serialize($options))];
+}
+
+function register_post_type() {
+
 }
